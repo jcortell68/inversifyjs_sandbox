@@ -8,8 +8,9 @@ export let container = new Container();
 // specify the scope.
 container.bind<ISuperhero>(TYPES.ISuperhero).to(MarvelCharacter);
 
-// Bind two different concrete types to the same interface, under different names.
-// Injection points can pick one or the other, or both.
-container.bind<IWeapon>(TYPES.IWeapon).to(Hammer).whenTargetNamed("lethal");
-container.bind<IWeapon>(TYPES.IWeapon).to(NerfGun).whenTargetNamed("nonlethal");
-container.bind<IWeapon>(TYPES.IWeapon).to(Hammer).whenTargetIsDefault();
+// Multi-injection allows us to bind multiple implementations to an abstraction,
+// but this requires the injection points to expect that (use @multiInject
+// instead of just @inject).
+container.bind<IWeapon>(TYPES.IWeapon).to(Hammer);
+container.bind<IWeapon>(TYPES.IWeapon).to(Sword);
+container.bind<IWeapon>(TYPES.IWeapon).to(NerfGun);

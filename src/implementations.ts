@@ -1,26 +1,19 @@
 import "reflect-metadata";
-import { inject, injectable, named, optional, tagged } from "inversify";
+import { inject, injectable, multiInject, named, optional, tagged } from "inversify";
 import { ISuperhero, IWeapon, TYPES } from "./types";
 
 @injectable()
 export class MarvelCharacter implements ISuperhero {
     constructor(
-        @inject(TYPES.IWeapon) @named("lethal") private lethal_weapon: IWeapon,
-        @inject(TYPES.IWeapon) @named("nonlethal") private woosie_weapon: IWeapon,
-        @inject(TYPES.IWeapon) private backup_weapon: IWeapon,
+        @multiInject(TYPES.IWeapon) private weapons: IWeapon[],
     ) {
         console.log("MarvelCharacter instantiated");
     }
 
-    fight(toKill: boolean): void {
-        if (toKill) {
-            this.lethal_weapon.useit()
+    fight(): void {
+        for (let weapon of this.weapons) {
+            weapon.useit();
         }
-        else {
-            this.woosie_weapon.useit()
-        }
-
-        this.backup_weapon.useit()
     }
 
     origin(): void {
@@ -31,20 +24,20 @@ export class MarvelCharacter implements ISuperhero {
 @injectable()
 export class Hammer implements IWeapon {
     useit(): void {
-        console.log("Hammer swung! Call the morgue.")
+        console.log("Hammer swung!")
     }
 }
 
 @injectable()
 export class Sword implements IWeapon {
     useit(): void {
-        console.log("Sword lunged! Call the priest.")
+        console.log("Sword lunged!")
     }
 }
 
 @injectable()
 export class NerfGun implements IWeapon {
     useit(): void {
-        console.log("NERF gun fired! Did you feel it?")
+        console.log("NERF gun fired!")
     }
 }
