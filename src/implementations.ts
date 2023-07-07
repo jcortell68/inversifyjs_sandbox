@@ -1,12 +1,12 @@
 import "reflect-metadata";
-import { inject, injectable, optional, tagged } from "inversify";
+import { inject, injectable, named, optional, tagged } from "inversify";
 import { ISuperhero, IWeapon, TYPES } from "./types";
 
 @injectable()
 export class MarvelCharacter implements ISuperhero {
     constructor(
-        @inject(TYPES.IWeapon) @tagged("lethal", true) private lethal_weapon: IWeapon,
-        @inject(TYPES.IWeapon) @tagged("lethal", false) private woosie_weapon: IWeapon,
+        @inject(TYPES.IWeapon) @named("lethal") private lethal_weapon: IWeapon,
+        @inject(TYPES.IWeapon) @named("nonlethal") private woosie_weapon: IWeapon,
     ) {
         console.log("MarvelCharacter instantiated");
     }

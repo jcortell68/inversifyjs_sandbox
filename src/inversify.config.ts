@@ -8,7 +8,7 @@ export let container = new Container();
 // specify the scope.
 container.bind<ISuperhero>(TYPES.ISuperhero).to(MarvelCharacter);
 
-// Bind two different concrete types to the same interface, under different tags.
+// Bind two different concrete types to the same interface, under different names.
 // Injection points can pick one or the other, or both.
-container.bind<IWeapon>(TYPES.IWeapon).to(Hammer).whenTargetTagged("lethal", true)
-container.bind<IWeapon>(TYPES.IWeapon).to(NerfGun).whenTargetTagged("lethal", false)
+container.bind<IWeapon>(TYPES.IWeapon).to(Hammer).whenTargetNamed("lethal");
+container.bind<IWeapon>(TYPES.IWeapon).to(NerfGun).whenTargetNamed("nonlethal");
