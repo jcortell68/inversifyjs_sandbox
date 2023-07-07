@@ -1,16 +1,18 @@
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
-import { ISuperhero, IWeapon, TYPES } from "./types";
+import { ISuperhero, IToy, IWeapon, TYPES } from "./types";
 
 @injectable()
 export class MarvelCharacter implements ISuperhero {
     constructor(
-        @inject(TYPES.IWeapon) private weapon: IWeapon
+        @inject(TYPES.IWeapon) private weapon: IWeapon,
+        @inject(TYPES.IToy) private toy: IToy
     ) {
         console.log("MarvelCharacter instantiated");
     }
 
     fight(): void {
+        this.toy.useit()
         this.weapon.useit()
     }
 
@@ -22,7 +24,7 @@ export class MarvelCharacter implements ISuperhero {
 @injectable()
 export class DcCharacter implements ISuperhero {
     constructor(
-        @inject(TYPES.IWeapon) private weapon: IWeapon
+        @inject(TYPES.IWeapon) private weapon: IWeapon,
     ) {
         console.log("DcCharacter instantiated");
     }
