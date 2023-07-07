@@ -1,6 +1,6 @@
 import { Container } from "inversify";
 import { TYPES, ISuperhero, IWeapon } from "./types";
-import { Hammer, MarvelCharacter, Sword } from "./implementations";
+import { MarvelCharacter, Sword } from "./implementations";
 
 export let container = new Container();
 
