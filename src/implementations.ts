@@ -4,24 +4,14 @@ import { ISuperhero, IWeapon, TYPES } from "./types";
 
 @injectable()
 export class MarvelCharacter implements ISuperhero {
-    private weapons: IWeapon[];
-
     constructor(
-        @inject(TYPES.IWeaponFactory) private weaponFactory: () => IWeapon
+        @inject(TYPES.IWeapon) private weapon
     ) {
         console.log("MarvelCharacter instantiated");
-
-        // Call the factory to get a bunch of weapons
-        this.weapons = [];
-        for (let i = 0; i < 5; i++) {
-            this.weapons.push(weaponFactory());
-        }
     }
 
     fight(): void {
-        for (let weapon of this.weapons) {
-            weapon.useit();
-        }
+        this.weapon.useit();
     }
 
     origin(): void {

@@ -9,6 +9,5 @@ export interface IWeapon {
 
 export let TYPES = {
     ISuperhero: Symbol("ISuperhero"),
-    IWeaponFactory: Symbol("IWeaponFactory"),
     IWeapon: Symbol("IWeapon"),
 }
