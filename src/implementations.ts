@@ -7,6 +7,7 @@ export class MarvelCharacter implements ISuperhero {
     constructor(
         @inject(TYPES.IWeapon) @named("lethal") private lethal_weapon: IWeapon,
         @inject(TYPES.IWeapon) @named("nonlethal") private woosie_weapon: IWeapon,
+        @inject(TYPES.IWeapon) private backup_weapon: IWeapon,
     ) {
         console.log("MarvelCharacter instantiated");
     }
@@ -18,6 +19,8 @@ export class MarvelCharacter implements ISuperhero {
         else {
             this.woosie_weapon.useit()
         }
+
+        this.backup_weapon.useit()
     }
 
     origin(): void {

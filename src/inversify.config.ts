@@ -12,3 +12,4 @@ container.bind<ISuperhero>(TYPES.ISuperhero).to(MarvelCharacter);
 // Injection points can pick one or the other, or both.
 container.bind<IWeapon>(TYPES.IWeapon).to(Hammer).whenTargetNamed("lethal");
 container.bind<IWeapon>(TYPES.IWeapon).to(NerfGun).whenTargetNamed("nonlethal");
+container.bind<IWeapon>(TYPES.IWeapon).to(Hammer).whenTargetIsDefault();
