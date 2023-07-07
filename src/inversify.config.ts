@@ -1,6 +1,6 @@
-import { Container, injectable, interfaces } from "inversify";
+import { Container } from "inversify";
 import { TYPES, ISuperhero, IWeapon } from "./types";
-import { Hammer, MarvelCharacter, NerfGun, Sword } from "./implementations";
+import { Hammer, MarvelCharacter, NerfGun } from "./implementations";
 
 let parent_container = new Container();
 
