@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@types/node@^20.4.0":
+  version "20.4.0"
+  resolved "https://registry.npmjs.org/@types/node/-/node-20.4.0.tgz#01d637d1891e419bc85763b46f42809cd2d5addb"
+  integrity sha512-jfT7iTf/4kOQ9S7CHV9BIyRaQqHu67mOjsIQBC3BKZvzvUB6zLxEwJ6sBE3ozcvP8kF6Uk5PXN0Q+c0dfhGX0g==
+
+inversify@latest:
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/inversify/-/inversify-6.0.1.tgz#b20d35425d5d8c5cd156120237aad0008d969f02"
+  integrity sha512-B3ex30927698TJENHR++8FfEaJGqoWOgI6ZY5Ht/nLUsFCwHn6akbwtnUAPCgUepAnTpe2qHxhDNjoKLyz6rgQ==
+
 node-bin-setup@^1.0.0:
   version "1.1.3"
   resolved "https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.1.3.tgz#d45d5220e3b2ecc3a94263a56116f727f6c1bb14"
