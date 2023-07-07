@@ -1,7 +1,5 @@
 import { container } from "./inversify.config";
-import { ISuperhero } from "./types";
-let assert = require('assert')
+import { TYPES, ISuperhero } from "./types";
 
-let hero = container.get<ISuperhero>("ISuperhero");
-hero.origin();
+let hero = container.get<ISuperhero>(TYPES.ISuperhero);
 hero.fight();
