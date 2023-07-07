@@ -4,8 +4,6 @@ import { Hammer, MarvelCharacter, NerfGun, Sword } from "./implementations";
 
 export let container = new Container();
 
-// Bind using transient scope. This is the default--what we get if we don't
-// specify the scope.
 container.bind<ISuperhero>("ISuperhero").to(MarvelCharacter);
 
 // Multi-injection allows us to bind multiple implementations to an abstraction,
