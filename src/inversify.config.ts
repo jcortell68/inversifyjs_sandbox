@@ -1,18 +1,20 @@
-import { Container, injectable, interfaces } from "inversify";
+import { Container, ContainerModule, injectable, interfaces } from "inversify";
 import { TYPES, ISuperhero, IWeapon } from "./types";
-import { Hammer, MarvelCharacter, NerfGun, Sword } from "./implementations";
+import { Hammer, MarvelCharacter } from "./implementations";
+import your_module_container from "./another.inversify.config";
 
-let parent_container = new Container();
+let my_module_container = new ContainerModule((bind: interfaces.Bind, unbind: interfaces.Unbind) => {
+    bind<ISuperhero>(TYPES.ISuperhero).to(MarvelCharacter);
+    bind<IWeapon>(TYPES.IWeapon).to(Hammer);
+});
 
-let child_container = new Container();
-child_container.parent = parent_container;
-
-parent_container.bind<ISuperhero>(TYPES.ISuperhero).to(MarvelCharacter);
-parent_container.bind<IWeapon>(TYPES.IWeapon).to(Hammer);
-
-// We effectively override the binding via the child container. Comment
-// out this line and you'll see the superhero use a hammer instead of
-// a nerf gun.
-child_container.bind<IWeapon>(TYPES.IWeapon).to(NerfGun);
-
-export { child_container as container };
+// We create a container from a combination of bindings we define, and ones another
+// module defines. This is managed via BindingModules. Our binding are defined
+// first (the order we use in the load call below), but the other module's bindings can
+// unbind nd rebind as they wish. I.e., we might thing we're special because we go first,
+// but it's more powerful to have the last say :-)
+//
+// Theia Extensions make use of Container Modules. Every Theia Extesion is a package that
+// contriutes a Container Module.
+export let container = new Container();
+container.load(my_module_container, your_module_container)
