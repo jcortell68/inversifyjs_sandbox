@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { inject, injectable, named, optional, tagged } from "inversify";
+import { inject, injectable, named } from "inversify";
 import { ISuperhero, IWeapon, TYPES } from "./types";
 
 @injectable()
