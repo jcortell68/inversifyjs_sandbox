@@ -4,9 +4,11 @@ import { ISuperhero, IWeapon, TYPES } from "./types";
 
 @injectable()
 export class MarvelCharacter implements ISuperhero {
-    constructor(
-        @multiInject(TYPES.IWeapon) private weapons: IWeapon[],
-    ) {
+    // Here we are doing property injection instead of constuctor injection.
+    // Ideally, you do this only for optional dependencies (not shown here).
+    @multiInject(TYPES.IWeapon) private weapons: IWeapon[];
+
+    constructor() {
         console.log("MarvelCharacter instantiated");
     }
 
