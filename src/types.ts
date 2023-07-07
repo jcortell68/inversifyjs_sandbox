@@ -1,6 +1,7 @@
 export interface ISuperhero {
     origin(): void;
     fight(): void;
+    speak(): void;
 }
 
 export interface IWeapon {

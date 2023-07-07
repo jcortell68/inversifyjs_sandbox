@@ -3,25 +3,30 @@ import { inject, injectable, multiInject, named, optional, tagged } from "invers
 import { ISuperhero, IWeapon, TYPES } from "./types";
 
 @injectable()
+export class Catchphrase {
+    sayit() : void {
+        console.log("Here I come to save the day!");
+    }
+}
+
+@injectable()
 export class MarvelCharacter implements ISuperhero {
-    private weapons: IWeapon[];
+    private weapon: IWeapon;
 
     constructor(
-        @inject(TYPES.IWeaponFactory) private weaponFactory: () => IWeapon
+        @inject(TYPES.IWeaponFactory) private weaponFactory: () => IWeapon,
+        private catchphrase : Catchphrase
     ) {
         console.log("MarvelCharacter instantiated");
 
-        // Call the factory to get a bunch of weapons
-        this.weapons = [];
-        for (let i = 0; i < 5; i++) {
-            this.weapons.push(weaponFactory());
-        }
+        this.weapon = weaponFactory();
+    }
+    speak(): void {
+        this.catchphrase.sayit()
     }
 
     fight(): void {
-        for (let weapon of this.weapons) {
-            weapon.useit();
-        }
+        this.weapon.useit();
     }
 
     origin(): void {
