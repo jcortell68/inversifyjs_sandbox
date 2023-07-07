@@ -1,7 +1,6 @@
 export interface ISuperhero {
     origin(): void;
     fight(): void;
-    speak(): void;
 }
 
 export interface IWeapon {
@@ -10,6 +9,5 @@ export interface IWeapon {
 
 export let TYPES = {
     ISuperhero: Symbol("ISuperhero"),
-    IWeaponFactory: Symbol("IWeaponFactory"),
     IWeapon: Symbol("IWeapon"),
 }

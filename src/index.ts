@@ -4,5 +4,4 @@ let assert = require('assert')
 
 let hero = container.get<ISuperhero>(TYPES.ISuperhero);
 hero.origin();
-hero.speak();
 hero.fight();
