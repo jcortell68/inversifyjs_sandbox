@@ -4,4 +4,9 @@ let assert = require('assert')
 
 let hero = container.get<ISuperhero>(TYPES.ISuperhero);
 hero.origin();
-hero.fight();
+
+// play fight at first
+hero.fight(false);
+
+// now we mean business
+hero.fight(true);

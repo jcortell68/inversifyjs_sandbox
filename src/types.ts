@@ -1,6 +1,6 @@
 export interface ISuperhero {
     origin(): void;
-    fight(): void;
+    fight(toKill: boolean): void;
 }
 
 export interface IWeapon {

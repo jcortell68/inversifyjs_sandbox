@@ -1,6 +1,6 @@
 import { Container } from "inversify";
 import { TYPES, ISuperhero, IWeapon } from "./types";
-import { Hammer, MarvelCharacter, Sword } from "./implementations";
+import { Hammer, MarvelCharacter, NerfGun, Sword } from "./implementations";
 
 export let container = new Container();
 
@@ -8,6 +8,7 @@ export let container = new Container();
 // specify the scope.
 container.bind<ISuperhero>(TYPES.ISuperhero).to(MarvelCharacter);
 
-// We can specify this binding or not if its injection points are declared
-// optional
-//container.bind<IWeapon>(TYPES.IWeapon).to(Sword);
+// Bind two different concrete types to the same interface, under different tags.
+// Injection points can pick one or the other, or both.
+container.bind<IWeapon>(TYPES.IWeapon).to(Hammer).whenTargetTagged("lethal", true)
+container.bind<IWeapon>(TYPES.IWeapon).to(NerfGun).whenTargetTagged("lethal", false)
