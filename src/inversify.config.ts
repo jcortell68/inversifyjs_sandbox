@@ -3,4 +3,7 @@ import { TYPES, ISuperhero } from "./types";
 import { MarvelCharacter } from "./implementations";
 
 export let container = new Container();
-container.bind<ISuperhero>(TYPES.ISuperhero).to(MarvelCharacter).inSingletonScope();
+
+// Bind using transient scope. This is the default--what we get if we don't
+// specify the scope.
+container.bind<ISuperhero>(TYPES.ISuperhero).to(MarvelCharacter).inTransientScope();
