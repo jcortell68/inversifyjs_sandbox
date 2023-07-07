@@ -1,12 +1,12 @@
 import "reflect-metadata";
 import { inject, injectable, multiInject, named, optional, tagged } from "inversify";
-import { ISuperhero, IWeapon, TYPES } from "./types";
+import { ISuperhero, IWeapon } from "./types";
 
 @injectable()
 export class MarvelCharacter implements ISuperhero {
     // Here we are doing property injection instead of constuctor injection.
     // Ideally, you do this only for optional dependencies (not shown here).
-    @multiInject(TYPES.IWeapon) private weapons: IWeapon[];
+    @multiInject("IWeapon") private weapons: IWeapon[];
 
     constructor() {
         console.log("MarvelCharacter instantiated");

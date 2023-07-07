@@ -6,8 +6,3 @@ export interface ISuperhero {
 export interface IWeapon {
     useit(): void;
 }
-
-export let TYPES = {
-    ISuperhero: Symbol("ISuperhero"),
-    IWeapon: Symbol("IWeapon"),
-}
