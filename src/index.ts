@@ -1,6 +1,8 @@
 import { container } from "./inversify.config";
-import { TYPES, ISuperhero } from "./types";
+import { TYPES, ISuperhero, IMereMortal } from "./types";
 
-let hero = container.get<ISuperhero>(TYPES.ISuperhero);
-hero.fight();
-hero.play();
+const heros = container.getAll<ISuperhero>(TYPES.ISuperhero);
+heros.forEach(hero => hero.fight());
+
+const mortals = container.getAll<IMereMortal>(TYPES.IMereMortal);
+mortals.forEach(mortal => mortal.work());
